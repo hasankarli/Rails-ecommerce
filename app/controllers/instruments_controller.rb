@@ -10,6 +10,7 @@ class InstrumentsController < ApplicationController
   # GET /instruments/1
   # GET /instruments/1.json
   def show
+    @instrument.user_id = current_user.id
   end
 
   # GET /instruments/new
@@ -24,13 +25,20 @@ class InstrumentsController < ApplicationController
   # POST /instruments
   # POST /instruments.json
   def create
-    @instrument = current_user.instruments.build(instrument_params)
+
+    @instrument = Instrument.new(instrument_params) #current_user.instruments.build(instrument_params)
+ puts "params format===#{params}"
+ @instrument.user_id = current_user.id
+   # @instrument.image = URI.parse(@instrument.image)    
 
     respond_to do |format|
       if @instrument.save
-        format.html { redirect_to @instrument, notice: 'Instrument was successfully created.' }
-        format.json { render :show, status: :created, location: @instrument }
+
+        format.html #{ redirect_to instruments_url, notice: 'Instrument was successfully created.' }
+        format.js
+        format.json #{ render :show, status: :created, location: @instrument }
       else
+        puts "inst====#{@instrument.errors.full_messages}"
         format.html { render :new }
         format.json { render json: @instrument.errors, status: :unprocessable_entity }
       end
