@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bulma-rails', '~> 0.7.5'
 gem 'gravatar_image_tag', '~> 1.2'
-gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'carrierwave', '~> 1.3'
 gem 'mini_magick', '~> 4.9', '>= 4.9.4'
 gem 'simple_form', '~> 4.1'
 gem 'devise', '~> 4.6', '>= 4.6.2'
